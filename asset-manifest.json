@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/crwn/static/css/main.7c45bdf2.css",
+    "main.js": "/crwn/static/js/main.8d830c03.js",
+    "static/js/787.871ab0f9.chunk.js": "/crwn/static/js/787.871ab0f9.chunk.js",
+    "index.html": "/crwn/index.html",
+    "main.7c45bdf2.css.map": "/crwn/static/css/main.7c45bdf2.css.map",
+    "main.8d830c03.js.map": "/crwn/static/js/main.8d830c03.js.map",
+    "787.871ab0f9.chunk.js.map": "/crwn/static/js/787.871ab0f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c45bdf2.css",
+    "static/js/main.8d830c03.js"
+  ]
+}

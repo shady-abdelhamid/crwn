@@ -1,6 +1,6 @@
 import "./category-item.styles.scss";
 
-type Category = {
+export type Category = {
   id: number;
   title: string;
   imageUrl: string;

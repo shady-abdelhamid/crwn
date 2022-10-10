@@ -1,6 +1,6 @@
 import "./button.styles.scss";
 
-import React, { FC, ReactNode } from "react";
+import React, { FC, MouseEventHandler, ReactNode } from "react";
 
 const BUTTON_TYPE_CLASSES = {
   google: "button--google",
@@ -10,7 +10,8 @@ const BUTTON_TYPE_CLASSES = {
 type ButtonProps = {
   buttonType?: "google" | "inverted";
   children: ReactNode;
-  type: 'submit';
+  type?: "submit" | "button";
+  onClick?: MouseEventHandler;
 };
 
 const Button: FC<ButtonProps> = ({ buttonType, children, ...otherProps }) => (

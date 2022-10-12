@@ -1,4 +1,10 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from "react";
+import React, {
+  ChangeEvent,
+  SyntheticEvent,
+  useContext,
+  useState,
+} from "react";
+import { UserContext } from "../../contexts/user.contaxt";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -22,6 +28,7 @@ const defaultForm: formModel = {
 };
 
 const SignUpForm = () => {
+  const { setCurrentUser } = useContext(UserContext);
   const [form, setForm] = useState(defaultForm);
   const { displayName, email, password, confirmPassword } = form;
 
@@ -48,6 +55,8 @@ const SignUpForm = () => {
         password
       )) as any;
 
+      setCurrentUser(user);
+      
       await createUserDocumentFromAuth(user, { displayName });
       resetForm();
     } catch (error: any) {

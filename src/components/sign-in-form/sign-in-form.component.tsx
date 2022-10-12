@@ -1,4 +1,10 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from "react";
+import React, {
+  ChangeEvent,
+  SyntheticEvent,
+  useContext,
+  useState,
+} from "react";
+import { UserContext } from "../../contexts/user.contaxt";
 import {
   signInWithGooglePopup,
   signIn,
@@ -19,6 +25,7 @@ const defaultForm: formModel = {
 };
 
 const SignInForm = () => {
+  const { setCurrentUser } = useContext(UserContext);
   const [form, setForm] = useState(defaultForm);
   const { email, password } = form;
 
@@ -42,7 +49,7 @@ const SignInForm = () => {
 
     try {
       const { user } = (await signIn(email, password)) as any;
-
+      setCurrentUser(user);
       resetForm();
     } catch (error: any) {
       switch (error.code) {
@@ -88,7 +95,7 @@ const SignInForm = () => {
         />
         <div className="sign-in__buttons">
           <Button type="submit">Sign In</Button>
-          <Button  type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             Sign In with google
           </Button>
         </div>

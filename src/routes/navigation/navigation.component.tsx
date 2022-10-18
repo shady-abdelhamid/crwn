@@ -18,16 +18,16 @@ const Navigation = () => {
           <CrwnLogo className="logo"></CrwnLogo>
         </Link>
         <div className="nav-links-container">
-          <NavLink className="nav-link" to="/">
-            Home
+          <NavLink className="nav-link" to="/shop">
+            SHOP
           </NavLink>
           {currentUser ? (
             <span className="nav-link" onClick={signOutHandler}>
-              Sign Out
+              SIGN OUT
             </span>
           ) : (
             <NavLink className="nav-link" to="/auth">
-              Sign In
+              SIGN IN
             </NavLink>
           )}
         </div>

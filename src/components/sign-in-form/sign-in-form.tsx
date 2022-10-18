@@ -10,9 +10,9 @@ import {
   signIn,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
-import "./sign-in.styles.scss";
+import Button from "../button/button";
+import FormInput from "../form-input/form-input";
+import "./sign-in.scss";
 
 type formModel = {
   email: string;

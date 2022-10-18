@@ -1,4 +1,4 @@
-import "./button.styles.scss";
+import "./button.scss";
 
 import React, { FC, MouseEventHandler, ReactNode } from "react";
 

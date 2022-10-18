@@ -1,4 +1,4 @@
-import "./category-item.styles.scss";
+import "./category-item.scss";
 
 export type Category = {
   id: number;

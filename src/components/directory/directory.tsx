@@ -1,8 +1,8 @@
-import "./directory.styles.scss";
+import "./directory.scss";
 
 import CategoryItem, {
   Category,
-} from "../category-item/category-item.component";
+} from "../category-item/category-item";
 
 type Props = {
   categories: Array<Category>;

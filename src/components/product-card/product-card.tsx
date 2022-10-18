@@ -1,7 +1,7 @@
 import "./product-card.scss";
 
 import React from "react";
-import Button from "../button/button.component";
+import Button from "../button/button";
 
 export const ProductCard = ({ product }: any) => {
   const { name, price, imageUrl } = product;

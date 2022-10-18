@@ -9,9 +9,9 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
-import "./sign-up.styles.scss";
+import Button from "../button/button";
+import FormInput from "../form-input/form-input";
+import "./sign-up.scss";
 
 type formModel = {
   displayName: string;

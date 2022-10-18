@@ -1,4 +1,4 @@
-import "./form-input.styles.scss";
+import "./form-input.scss";
 
 export type FormInputProps = {
   label: string;

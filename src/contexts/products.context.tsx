@@ -1,11 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, FC, ReactNode, useState } from "react";
+import { Product } from "../models/product";
 import PRODUCTS from "../shop-data.json";
 
-export const ProductsContext = createContext({
-  products: [],
-} as any);
+type ContextType = {
+  products: Array<Product>;
+};
 
-export const ProductsProvider = ({ children }: any) => {
+export const ProductsContext = createContext<ContextType>({
+  products: [],
+});
+
+type Props = { children: ReactNode };
+
+export const ProductsProvider: FC<Props> = ({ children }) => {
   const [products, setProducts] = useState(PRODUCTS);
   const value = { products };
 

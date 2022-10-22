@@ -1,11 +1,13 @@
-import { createContext, FC, ProviderProps, ReactNode, useState } from "react";
+import { createContext, FC, ReactNode, useState } from "react";
 
 export const UserContext = createContext({
   currentUser: null,
   setCurrentUser: () => null,
 } as any);
 
-export const UserProvider = ({ children }: any) => {
+type Props = { children: ReactNode };
+
+export const UserProvider: FC<Props> = ({ children }: any) => {
   const [currentUser, setCurrentUser] = useState(null);
   const value = { currentUser, setCurrentUser };
 

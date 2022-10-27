@@ -6,8 +6,7 @@ import "./checkout.scss";
 type Props = {};
 
 const Checkout: FC<Props> = ({}) => {
-  const { cartItems, addItemToCart, removeItemFromCart } =
-    useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
     <div className="checkout">
@@ -31,7 +30,7 @@ const Checkout: FC<Props> = ({}) => {
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
-      <span className="checkout__total">Total: 0</span>
+      <span className="checkout__total">Total: {cartTotal}</span>
     </div>
   );
 };

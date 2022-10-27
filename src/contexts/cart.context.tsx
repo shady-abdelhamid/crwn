@@ -26,10 +26,7 @@ const addCartItem = (
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (
-  cartItems: CartItem[],
-  itemTobeRemoved: CartItem
-): CartItem[] => {
+const removeCartItem = (cartItems: CartItem[], itemTobeRemoved: CartItem) => {
   const existingItem = cartItems.find((item) => item.id === itemTobeRemoved.id);
 
   if (existingItem?.quantity === 1) {
@@ -43,13 +40,19 @@ const removeCartItem = (
   );
 };
 
+const clearCartItem = (cartItems: CartItem[], itemTobeCleared: CartItem) => {
+  return cartItems.filter((item) => item.id !== itemTobeCleared.id);
+};
+
 type Type = {
   isCartOpen: boolean;
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
   cartItems: Array<CartItem>;
   addItemToCart: (productToAdd: Product) => void;
   removeItemFromCart: (itemtobeRemoved: CartItem) => void;
+  clearItemFromCart: (itemToBeCleared: CartItem) => void;
   cartCount: number;
+  cartTotal: number;
 };
 
 export const CartContext = createContext<Type>({
@@ -58,7 +61,9 @@ export const CartContext = createContext<Type>({
   cartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: () => {},
+  clearItemFromCart: () => {},
   cartCount: 0,
+  cartTotal: 0,
 });
 
 type Props = {
@@ -69,6 +74,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<Array<CartItem>>([]);
   const [cartCount, setCartCount] = useState<number>(0);
+  const [cartTotal, setCartTotal] = useState<number>(0);
 
   useEffect(() => {
     const count = cartItems.reduce(
@@ -79,6 +85,15 @@ export const CartProvider: FC<Props> = ({ children }) => {
     setCartCount(count);
   }, [cartItems]);
 
+  useEffect(() => {
+    const newCartTotal = cartItems.reduce(
+      (total, cartItem) => total + cartItem.price,
+      0
+    );
+
+    setCartTotal(newCartTotal);
+  }, [cartItems]);
+
   const addItemToCart = (productToAdd: Product) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
@@ -87,13 +102,19 @@ export const CartProvider: FC<Props> = ({ children }) => {
     setCartItems(removeCartItem(cartItems, itemToBeRemoved));
   };
 
+  const clearItemFromCart = (item: CartItem) => {
+    setCartItems(clearCartItem(cartItems, item));
+  };
+
   const value: Type = {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
     removeItemFromCart,
+    clearItemFromCart,
     cartItems,
     cartCount,
+    cartTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

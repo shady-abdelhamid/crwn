@@ -9,7 +9,8 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from "firebase/firestore";
+import { Product } from "../../models/product";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAD9mJD-rKPJX05x5v_zuWyvJYfC0kBfY4",
@@ -44,6 +45,40 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+/**
+ * use one time for seeding data from shop-data.ts
+ * @param collectionKey 
+ * @param objectsToAdd 
+ */
+ export const addCollectionAndDocuments = async (collectionKey: any, objectsToAdd: any[]) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log('done');
+}
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories');
+  const q = query(collectionRef);
+  
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc: any, docSnapshot) => {
+    const {title, items} = docSnapshot.data();
+    const prop = (title as string).toLowerCase();
+    acc[prop] = items;
+    return acc
+  }, {});
+
+  return categoryMap;
+}
+
+
 
 export const createUserDocumentFromAuth = async (
   userAuth: any,

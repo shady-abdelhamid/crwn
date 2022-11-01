@@ -30,7 +30,7 @@ const Checkout: FC<Props> = ({}) => {
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
-      <span className="checkout__total">Total: {cartTotal}</span>
+      <span className="checkout__total">Total: ${cartTotal}</span>
     </div>
   );
 };

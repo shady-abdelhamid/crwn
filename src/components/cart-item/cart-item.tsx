@@ -1,17 +1,18 @@
 import { CartItem as Model } from "../../models/cart-item";
-import "./cart-item.scss";
+import { StyledCartItem, StyledImg, StyledDetails, StyledName } from "./cart-item.styles";
+import "./cart-item.styles.tsx";
 
 const CartItem = ({ name, quantity, price, imageUrl }: Model) => {
   return (
-    <div className="cart-item">
-      <img className="cart-item__image" src={imageUrl} alt={name} />
-      <div className="cart-item__details">
-        <span className="cart-item__name">{name}</span>
-        <span className="cart-item__price">
+    <StyledCartItem>
+      <StyledImg src={imageUrl} alt={name} />
+      <StyledDetails>
+        <StyledName >{name}</StyledName>
+        <span>
           {quantity} x ${price}
         </span>
-      </div>
-    </div>
+      </StyledDetails>
+    </StyledCartItem>
   );
 };
 

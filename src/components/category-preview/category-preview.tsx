@@ -1,9 +1,13 @@
-import "./category-preview.scss";
+import "./category-preview.styles.tsx";
 
 import { FC } from "react";
 import { Product } from "../../models/product";
 import { ProductCard } from "../product-card/product-card";
-import { Link } from "react-router-dom";
+import {
+  StyledCategoryPreview,
+  StyledLink,
+  StyledProducts,
+} from "./category-preview.styles";
 
 type Props = {
   title: string;
@@ -12,20 +16,18 @@ type Props = {
 
 const CategoryPreview: FC<Props> = ({ title, products }) => {
   return (
-    <div className="category-preview">
+    <StyledCategoryPreview>
       <h2>
-        <Link className="category-preview__title" to={title}>
-          {title.toUpperCase()}
-        </Link>
+        <StyledLink to={title}>{title.toUpperCase()}</StyledLink>
       </h2>
-      <div className="category-preview__products">
+      <StyledProducts>
         {products
           .filter((_, idx) => idx < 4)
           .map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-      </div>
-    </div>
+      </StyledProducts>
+    </StyledCategoryPreview>
   );
 };
 

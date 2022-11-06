@@ -1,5 +1,5 @@
 import { Fragment, useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown";
 import CartIcon from "../../components/cart-icon/cart-icon";
@@ -10,7 +10,7 @@ import {
   StyledLink,
   StyledNavigation,
   StyledNavLink,
-  StyledNavLinks,
+  StyledNavLinks
 } from "./navigation.styles";
 
 const Navigation = () => {

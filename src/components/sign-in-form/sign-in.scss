@@ -1,7 +1,6 @@
 .sign-in {
   display: flex;
   flex-direction: column;
-  width: 430px;
 
   h2 {
     margin: 10px 0;
@@ -10,8 +9,6 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    & > button {
-      white-space: nowrap;
-    }
+    
   }
 }

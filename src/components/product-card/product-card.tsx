@@ -2,12 +2,12 @@ import "./product-card.scss";
 
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import Button from "../button/button";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
 import { Product } from "../../models/product";
 
- type Props = {
+type Props = {
   product: Product;
-}
+};
 export const ProductCard = ({ product }: Props) => {
   const { addItemToCart } = useContext(CartContext);
 
@@ -22,7 +22,10 @@ export const ProductCard = ({ product }: Props) => {
         <span className="product-card__name">{name}</span>
         <span className="product-card__price">{price}</span>
       </div>
-      <Button buttonType="inverted" onClick={addProductToCart}>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.inverted}
+        onClick={addProductToCart}
+      >
         Add to Cart
       </Button>
     </div>

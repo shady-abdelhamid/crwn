@@ -1,6 +1,6 @@
 import "./directory.styles.tsx";
 
-import CategoryItem, { Category } from "../category-item/category-item";
+import DirectoryItem, { Category } from "../directory-item/directory-item";
 import { StyledDirectory } from "./directory.styles";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 const Directory = ({ categories }: Props) => (
   <StyledDirectory>
     {categories.map((category) => (
-      <CategoryItem category={category} key={category.id}></CategoryItem>
+      <DirectoryItem category={category} key={category.id}></DirectoryItem>
     ))}
   </StyledDirectory>
 );

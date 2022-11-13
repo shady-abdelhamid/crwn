@@ -11,7 +11,8 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button";
 import FormInput from "../form-input/form-input";
-import "./sign-up.scss";
+import { StyledSignup, H2 } from "./sign-up.styles";
+import "./sign-up.styles.tsx";
 
 type formModel = {
   displayName: string;
@@ -68,10 +69,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up">
+    <StyledSignup>
       <h1>Don't have an account</h1>
 
-      <h2>Sign up with your email and password</h2>
+      <H2>Sign up with your email and password</H2>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -120,7 +121,7 @@ const SignUpForm = () => {
 
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </StyledSignup>
   );
 };
 

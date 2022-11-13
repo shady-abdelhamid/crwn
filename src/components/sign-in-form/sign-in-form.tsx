@@ -12,7 +12,8 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
 import FormInput from "../form-input/form-input";
-import "./sign-in.scss";
+import { H2, StyledButtons, StyledSignin } from "./sign-in.styles";
+import "./sign-in.styles.tsx";
 
 type formModel = {
   email: string;
@@ -66,10 +67,10 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in">
+    <StyledSignin>
       <h1>Already have an account</h1>
 
-      <h2>Sign in with your email and password</h2>
+      <H2>Sign in with your email and password</H2>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
@@ -93,7 +94,7 @@ const SignInForm = () => {
             required: true,
           }}
         />
-        <div className="sign-in__buttons">
+        <StyledButtons>
           <Button type="submit">Sign In</Button>
           <Button
             type="button"
@@ -102,9 +103,9 @@ const SignInForm = () => {
           >
             Sign In with google
           </Button>
-        </div>
+        </StyledButtons>
       </form>
-    </div>
+    </StyledSignin>
   );
 };
 

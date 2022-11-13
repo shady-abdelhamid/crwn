@@ -1,18 +1,17 @@
-import "./directory.scss";
+import "./directory.styles.tsx";
 
-import CategoryItem, {
-  Category,
-} from "../category-item/category-item";
+import CategoryItem, { Category } from "../category-item/category-item";
+import { StyledDirectory } from "./directory.styles";
 
 type Props = {
   categories: Array<Category>;
 };
 const Directory = ({ categories }: Props) => (
-  <div className="directory">
+  <StyledDirectory>
     {categories.map((category) => (
       <CategoryItem category={category} key={category.id}></CategoryItem>
     ))}
-  </div>
+  </StyledDirectory>
 );
 
 export default Directory;

@@ -1,37 +1,41 @@
 import { FC, useContext } from "react";
 import { CheckoutItem } from "../../components/checkout-item/checkout-item";
 import { CartContext } from "../../contexts/cart.context";
-import "./checkout.scss";
+import {
+  StyledBlock,
+  StyledContainer,
+  StyledHeader,
+  StyledTotal,
+} from "./checkout.styles";
+import "./checkout.styles.tsx";
 
-type Props = {};
-
-const Checkout: FC<Props> = ({}) => {
+const Checkout: FC = () => {
   const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
-    <div className="checkout">
-      <div className="checkout__header">
-        <div className="checkout__block">
+    <StyledContainer>
+      <StyledHeader>
+        <StyledBlock>
           <span>Product</span>
-        </div>
-        <div className="checkout__block">
+        </StyledBlock>
+        <StyledBlock>
           <span>Description</span>
-        </div>
-        <div className="checkout__block">
+        </StyledBlock>
+        <StyledBlock>
           <span>Quantity</span>
-        </div>
-        <div className="checkout__block">
+        </StyledBlock>
+        <StyledBlock>
           <span>Price</span>
-        </div>
-        <div className="checkout__block">
+        </StyledBlock>
+        <StyledBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </StyledBlock>
+      </StyledHeader>
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
-      <span className="checkout__total">Total: ${cartTotal}</span>
-    </div>
+      <StyledTotal>Total: ${cartTotal}</StyledTotal>
+    </StyledContainer>
   );
 };
 

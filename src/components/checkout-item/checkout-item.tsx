@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { CartItem } from "../../models/cart-item";
-import { Product } from "../../models/product";
 import {
   StyledArrow,
   StyledCheckoutItem,
@@ -17,7 +16,7 @@ type Prop = {
 };
 
 export const CheckoutItem: React.FC<Prop> = ({ cartItem }) => {
-  const { id, name, imageUrl, quantity, price } = cartItem;
+  const { name, imageUrl, quantity, price } = cartItem;
   const { clearItemFromCart, addItemToCart, removeItemFromCart } =
     useContext(CartContext);
 

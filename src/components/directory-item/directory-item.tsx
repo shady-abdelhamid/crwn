@@ -1,5 +1,11 @@
-
-import { H2, P, StyledBgImage, StyledBody, StyledCategoryItem } from "./directory-item.styles";
+import { useNavigate } from "react-router-dom";
+import {
+  H2,
+  P,
+  StyledBgImage,
+  StyledBody,
+  StyledCategoryItem,
+} from "./directory-item.styles";
 
 export type Category = {
   id: number;
@@ -13,11 +19,12 @@ interface Props {
 
 const DirectoryItem = ({ category }: Props) => {
   const { title, imageUrl } = category;
-  console.log(imageUrl);
-  
+  const navigate = useNavigate();
+
+  const onNavigateHandler = () => navigate(`shop/${title}`);
   return (
-    <StyledCategoryItem>
-      <StyledBgImage imageUrl={imageUrl}/>
+    <StyledCategoryItem onClick={onNavigateHandler}>
+      <StyledBgImage imageUrl={imageUrl} />
       <StyledBody>
         <H2>{title}</H2>
         <P>Shop Now</P>

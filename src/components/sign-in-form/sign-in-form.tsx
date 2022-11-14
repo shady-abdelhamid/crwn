@@ -7,7 +7,7 @@ import React, {
 import { UserContext } from "../../contexts/user.contaxt";
 import {
   signInWithGooglePopup,
-  signIn,
+  signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
@@ -48,7 +48,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = (await signIn(email, password)) as any;
+      const { user } = (await signInAuthUserWithEmailAndPassword(email, password)) as any;
       setCurrentUser(user);
       resetForm();
     } catch (error: any) {

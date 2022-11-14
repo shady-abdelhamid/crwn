@@ -1,4 +1,5 @@
-import "./form-input.scss";
+import { Input, StyledGroup, StyledLabel } from "./form-input.styles";
+import "./form-input.styles.tsx";
 
 export type FormInputProps = {
   label: string;
@@ -6,7 +7,7 @@ export type FormInputProps = {
     type: "text" | "email" | "password";
     name: string;
     id: string;
-    value: string | number;
+    value: string;
     onChange: any;
     required?: boolean;
     disabled?: boolean;
@@ -14,17 +15,12 @@ export type FormInputProps = {
 };
 
 const FormInput = ({ label, inputOptions }: FormInputProps) => (
-  <div className="form-input__group">
-    <input className="form-input" {...inputOptions} />
-    <label
-      className={`form-input__label ${
-        inputOptions.value && "form-input__label--shrink"
-      }`}
-      htmlFor={inputOptions.id}
-    >
+  <StyledGroup>
+    <Input {...inputOptions} />
+    <StyledLabel shrink={!!inputOptions.value.length} htmlFor={inputOptions.id}>
       {label}
-    </label>
-  </div>
+    </StyledLabel>
+  </StyledGroup>
 );
 
 export default FormInput;
